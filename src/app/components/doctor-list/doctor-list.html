@@ -1,0 +1,10 @@
+<h3>Our Doctors</h3>
+@if (doctors$ | async; as doctors) {
+<ul>
+  @for (doctor of doctors; track doctor.id) {
+  <li>{{ doctor.name }}</li>
+  } @empty {
+  <li aria-hidden="true">There are no doctors.</li>
+  }
+</ul>
+}
