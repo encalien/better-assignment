@@ -1,10 +1,16 @@
 <h3>Our Doctors</h3>
 @if (doctors$ | async; as doctors) {
-<ul>
+<div class="doctor-list">
   @for (doctor of doctors; track doctor.id) {
-  <li>{{ doctor.name }}</li>
+  <div
+    class="doctor-list-item"
+    [class.active]="selectedDoctor?.id === doctor.id"
+    (click)="handleSelectDoctor(doctor)"
+  >
+    {{ doctor.name }}
+  </div>
   } @empty {
-  <li aria-hidden="true">There are no doctors.</li>
+  <div class="doctor-list-item">There are no doctors.</div>
   }
-</ul>
+</div>
 }

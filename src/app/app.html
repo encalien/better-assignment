@@ -1,2 +1,5 @@
 <h1>Doctor Assignment Dashboard</h1>
-<app-doctor-list />
+<div class="main-content">
+  <app-doctor-list (selectDoctor)="onSelectDoctor($event)" />
+  <app-doctor-detail [doctor]="selectedDoctor" />
+</div>

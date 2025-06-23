@@ -1,8 +1,8 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ENDPOINTS } from '../constants/endpoints';
-import { TDoctor } from '../models';
-import { Observable } from 'rxjs';
+import { TDoctor, TTask } from '../models';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -12,5 +12,9 @@ export class ApiService {
 
   getDoctors(): Observable<TDoctor[]> {
     return this.http.get<TDoctor[]>(ENDPOINTS.doctors);
+  }
+
+  getDoctorTasks(doctorId: number): Observable<any> {
+    return this.http.get<TTask[]>(ENDPOINTS.doctorTasks(doctorId));
   }
 }

@@ -1,4 +1,4 @@
-import { TDoctor } from '../models';
+import { TDoctor, TTask } from '../models';
 
 export const doctors: TDoctor[] = [
   {
@@ -46,5 +46,45 @@ export const doctors: TDoctor[] = [
       catchPhrase: 'Proactive didactic contingency',
       bs: 'synergize scalable supply-chains',
     },
+  },
+];
+
+export const tasks: TTask[] = [
+  {
+    userId: 1,
+    id: 1,
+    title: 'delectus aut autem',
+    completed: false,
+  },
+  {
+    userId: 1,
+    id: 2,
+    title: 'quis ut nam facilis et officia qui',
+    completed: false,
+  },
+  {
+    userId: 2,
+    id: 21,
+    title: 'suscipit repellat esse quibusdam voluptatem incidunt',
+    completed: false,
+  },
+  {
+    userId: 2,
+    id: 22,
+    title: 'distinctio vitae autem nihil ut molestias quo',
+    completed: true,
+  },
+  {
+    userId: 3,
+    id: 41,
+    title:
+      'aliquid amet impedit consequatur aspernatur placeat eaque fugiat suscipit',
+    completed: false,
+  },
+  {
+    userId: 3,
+    id: 42,
+    title: 'rerum perferendis error quia ut eveniet',
+    completed: false,
   },
 ];

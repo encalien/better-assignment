@@ -4,7 +4,7 @@ import { ApiService } from './api';
 import { HttpClient } from '@angular/common/http';
 import { of } from 'rxjs';
 import { ENDPOINTS } from '../constants/endpoints';
-import { doctors } from '../mocks/api.mock';
+import { doctors, tasks as mockTasks } from '../mocks/api.mock';
 
 describe('Api', () => {
   let apiService: ApiService;
@@ -40,5 +40,18 @@ describe('Api', () => {
     apiService.getDoctors().subscribe((doctors) => {
       expect(doctors).toEqual(doctors);
     });
+  });
+
+  it('should retrieve tasks list from API', () => {
+    httpClientSpy.get.and.returnValue(of(mockTasks));
+
+    apiService.getDoctorTasks(doctors[0].id).subscribe((tasks) => {
+      expect(tasks).toEqual(mockTasks);
+    });
+
+    expect(httpClientSpy.get.calls.count()).toBe(1);
+    expect(httpClientSpy.get.calls.mostRecent().args[0]).toBe(
+      ENDPOINTS.doctorTasks(doctors[0].id)
+    );
   });
 });

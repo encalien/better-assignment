@@ -1,0 +1,43 @@
+<div class="doctor-detail">
+  @if (doctor()) {
+  <h3>{{ doctor()?.name }}</h3>
+  <p>Employed at {{ doctor()?.company?.name }}</p>
+  <section>
+    <h4>Contact Information</h4>
+    <p>
+      Email: <a href="mailto:{{ doctor()?.email }}">{{ doctor()?.email }}</a>
+    </p>
+    <p>Phone: <a href="tel:{{ doctor()?.phone }}">{{ doctor()?.phone }}</a></p>
+    <p>
+      Website:
+      <a href="http://{{ doctor()?.website }}" target="_blank"
+        >{{ doctor()?.website }}</a
+      >
+    </p>
+  </section>
+  <section>
+    <h4>Address</h4>
+    <p>{{ doctor()?.address?.street }}</p>
+    <p>{{ doctor()?.address?.zipcode }} {{ doctor()?.address?.city }}</p>
+  </section>
+  <section>
+    <h4>Tasks</h4>
+    @if (tasks$ | async; as tasks) { @for (task of tasks; track task.id) {
+    <p>
+      <input
+        type="checkbox"
+        [name]="task.id"
+        [id]="task.id"
+        [checked]="task.completed"
+        disabled
+      />
+      {{ task.title }}
+    </p>
+    } @empty {
+    <p>There are no tasks.</p>
+    } }
+  </section>
+  } @else {
+  <p>Select a doctor to view details.</p>
+  }
+</div>
